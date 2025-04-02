@@ -1,0 +1,54 @@
+body {
+  background: #635b5b;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: sans-serif;
+  margin: 1em;
+  display: grid;
+  justify-self: center;
+  justify-content: center;
+}
+body h1 {
+  font-size: 34px;
+  line-height: 34px;
+  color: rgb(255, 255, 255);
+}
+
+.pfp {
+  background-color: rgb(255, 145, 0);
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+#posts {
+  display: grid;
+  justify-self: center;
+  overflow-y: scroll;
+  width: 675px;
+  height: 600px;
+  border: black;
+}
+#posts .post {
+  background-color: #9b9999;
+  max-width: 600px;
+  outline-color: black;
+  outline-style: solid;
+  border-radius: 10px;
+  border: 50px;
+  padding: 10px;
+  margin-top: 10px;
+  margin: 10px;
+  text-wrap: wrap;
+  word-wrap: break-word;
+  box-shadow: 7px 7px rgba(0, 0, 0, 0.329);
+  height: auto;
+  max-height: 200px;
+}
+
+.buttons {
+  display: flex;
+  justify-self: left;
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=input.css.map */

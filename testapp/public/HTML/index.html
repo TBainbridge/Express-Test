@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FriendFace</title>
+    <link href="../stylesheets/input.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+  </head>
+  <body>
+    <img src="http://localhost:3000/images/LinkedIn-cover-image-dark.jpg" width="760">
+    <h1>FriendFace</h1>
+
+    <div id="form-area">
+      <form id="add-post">
+        Author:
+        <input id="author-field" type="text" pattern="[a-zA-Z0-9]+" />
+        Date:
+        <input id="date-field" type="date" />
+        <br />
+        Content:
+        <br />
+        <textarea rows="4" cols="100" id="content-field" required wrap="soft" maxlength="50"></textarea>
+        <br />
+        <input type="color" id="pfpColour" name="body" />
+        <input id="add-post-submit" type="submit" />
+      </form>
+    </div>
+
+    <div id="errorMessage"></div>
+
+    <hr />
+
+      <div class = "buttons">
+      </div>
+
+      <div class = "buttons"> 
+        <button onclick="sortDate()"> Date posted </button> 
+        <button onclick="sortName()"> Poster Name </button> 
+        <button onclick="sortLikes()"> Likes </button> 
+      </div>
+<!--could maybe change this to flip the text on the button as well -->
+   
+
+      <div id="posts"></div>
+    
+
+    <script type="text/javascript" src="../javascripts\main.js"></script>
+  </body>
+</html>
+
