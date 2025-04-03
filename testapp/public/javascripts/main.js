@@ -1,6 +1,3 @@
-
-
-
 const form = document.getElementById("add-post");
 const authorField = document.getElementById("author-field");
 const dateField = document.getElementById("date-field");
@@ -8,9 +5,24 @@ const contentField = document.getElementById("content-field");
 const error = document.getElementById("errorMessage");
 const postArea = document.getElementById("posts");
 const colourField = document.getElementById("pfpColour");
+const postFormatPattern = /^[A-Za-z0-9 .,!?()%&£'$'"]+$/ // keeping the regex as a variable allows us to use the .test func
 nameReverse = false;
 numReverse = false;
 likeReverse = false;
+
+// You can put these into a list directly like so: 
+/*
+const = [
+  {
+    ID: 0, 
+    ... 
+  }, 
+  {
+    Id: 1, 
+    ...
+  }
+]
+*/
 
 const examplePost = {
   ID: 0,
@@ -44,24 +56,46 @@ var posts = [examplePost,examplePost2,examplePost3,examplePost,examplePost2,exam
 IDCount = posts.length;
 
 form.onsubmit = function(event) {
+  /* you can store these as an object 
+  postInfo = {
+  ID = IDCount
+  author = authorField.value 
+  ... 
+  }
+
+  Then that means you can just pass it as one object in create post 
+  and helps add context to what these variables are 
+
+  */
+
+  const postInfo = {
+    ID: IDCount,
+    profilePictureColour : colourField.value,
+    author : authorField.value,
+    content : contentField.value,
+    date : dateField.value,
+    likes : 0
+
+  }
   const ID = IDCount;
   IDCount++;
-  const pfpColour = colourField.value;
-  const author = authorField.value;
-  const content = contentField.value;
-  const date = dateField.value;
-  const likes = 0;
-  const regex = /^[A-Za-z0-9 .,!?()%&£'$'"]+$/ // keeping the regex as a variable allows us to use the .test func
+
+  // I would extract this regex variable at the top of the page since it'll always be the same for every post 
+  // Makes it easier to go back and find and change and you code can be liek 
+  //  regex = POST_REGEX_INPUT
+  // I'd also rename it as regex on it's own isn't descriptive of what the variable does
+  //  Something like post format would be better 
+  
 
 
 
-  if (!regex.test(author)) 
+  if (!postFormatPattern.test(author)) 
     {
       alert("Author contains special characters!")
       return false;
     }
 
-  if (!regex.test(content))
+  if (!postFormatPattern.test(content))
     {
       alert ("Content contains special characters")
       return false;
@@ -78,8 +112,8 @@ form.onsubmit = function(event) {
   event.preventDefault();
 };
 
-
-sortDate = function(){
+//  I'd rename these methods  to sortByDate, etc. since that's what it's doing, rather than sorting a list of dates. 
+sortByDate = function(){
   numReverse = !numReverse;
   nameReverse = false;
   likeReverse = false;
@@ -93,7 +127,7 @@ sortDate = function(){
   
 }
 
-sortName = function(){
+sortByName = function(){
 
   nameReverse = !nameReverse;
   numReverse = false;
@@ -115,7 +149,7 @@ sortName = function(){
 
 
 
-sortLikes = function(){
+sortByLikes = function(){
   likeReverse = !likeReverse;
   numReverse = false;
   nameReverse = false;
@@ -127,9 +161,9 @@ sortLikes = function(){
   }
 
   reloadPostList();
-
-
 }
+
+// I like that you extracted these to seperate methods, it makes the code a lot more self documenting 
 
 reloadPostList = function() {
   postArea.innerHTML = "";
