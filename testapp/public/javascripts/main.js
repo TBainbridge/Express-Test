@@ -10,6 +10,7 @@ nameReverse = false;
 numReverse = false;
 likeReverse = false;
 
+
 // You can put these into a list directly like so: 
 /*
 const = [
@@ -22,6 +23,8 @@ const = [
     ...
   }
 ]
+
+I'm not currently doing this because i am inserting the same posts multiple times, so its easier to just set them like i have below
 */
 
 const examplePost = {
@@ -85,20 +88,20 @@ form.onsubmit = function(event) {
 
 
 
-  if (!postFormatPattern.test(author)) 
+  if (!postFormatPattern.test(authorField.value)) 
     {
       alert("Author contains special characters!")
       return false;
     }
 
-  if (!postFormatPattern.test(content))
+  if (!postFormatPattern.test(contentField.value))
     {
       alert ("Content contains special characters")
       return false;
     }
   
 
-  createPost({ID, author, date, content, likes, pfpColour});
+  createPost(postInfo);
   reloadPostList(reverse = false);
 
   authorField.value = "";
