@@ -1,3 +1,5 @@
+
+
 const form = document.getElementById("add-post");
 const authorField = document.getElementById("author-field");
 const dateField = document.getElementById("date-field");
@@ -9,6 +11,8 @@ const postFormatPattern = /^[A-Za-z0-9 .,!?()%&£'$'"]+$/ // keeping the regex a
 nameReverse = false;
 numReverse = false;
 likeReverse = false;
+
+
 
 
 // You can put these into a list directly like so: 
@@ -27,6 +31,47 @@ const = [
 I'm not currently doing this because i am inserting the same posts multiple times, so its easier to just set them like i have below
 */
 
+const posts = [
+  {
+    ID: 1,
+    author: "TestUser1",
+    date: "01/10/2019",
+    content:
+      "test",
+    likes: 11
+  },
+
+  {
+    ID: 2,
+    author: "TestUser2",
+    date: "01/10/2019",
+    content:
+      "test",
+    likes: 11
+  },
+
+  {
+    ID: 3,
+    author: "TestUser3",
+    date: "01/10/2019",
+    content:
+      "test",
+    likes: 11
+  },
+
+  {
+    ID: 4,
+    author: "TestUser4",
+    date: "01/10/2019",
+    content:
+      "test",
+    likes: 11
+  }
+  
+
+
+
+]
 const examplePost = {
   ID: 0,
   author: "bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -54,7 +99,7 @@ const examplePost3 = {
   likes: 1
 };
 
-var posts = [examplePost,examplePost2,examplePost3,examplePost,examplePost2,examplePost3,examplePost,examplePost2,examplePost3,examplePost,examplePost2,examplePost3,examplePost,examplePost2,examplePost3,];
+
 
 IDCount = posts.length;
 
@@ -74,7 +119,6 @@ form.onsubmit = function(event) {
     content : contentField.value,
     date : dateField.value,
     likes : 0
-
   }
   const ID = IDCount;
   IDCount++;
@@ -168,7 +212,7 @@ reloadPostList = function() {
   postArea.innerHTML = "";
   
   posts.forEach(post => (postArea.innerHTML += formatPost(post)));
-  console.log(posts);
+ 
 };
 
 createPost = function(post) {
@@ -181,12 +225,12 @@ addLike = function(postID){
 }
 
 deletePost = function(postID){
-  posts.pop(postID);
+  delete posts[postID-1]; //-1 to get the index by 0 value
   reloadPostList();
+  console.log(postID);
 
 }
 formatPost = function(post) {
-  console.log(post.ID);
   return `
     <div id = ${post.ID} class="post">
     
