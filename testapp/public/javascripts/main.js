@@ -13,24 +13,6 @@ numReverse = false;
 likeReverse = false;
 
 
-
-
-// You can put these into a list directly like so: 
-/*
-const = [
-  {
-    ID: 0, 
-    ... 
-  }, 
-  {
-    Id: 1, 
-    ...
-  }
-]
-
-I'm not currently doing this because i am inserting the same posts multiple times, so its easier to just set them like i have below
-*/
-
 const posts = [
   {
     ID: 1,
@@ -101,7 +83,7 @@ const examplePost3 = {
 
 
 
-IDCount = posts.length;
+IDCount = posts.length + 1;
 
 form.onsubmit = function(event) {
 
@@ -120,8 +102,7 @@ form.onsubmit = function(event) {
     date : dateField.value,
     likes : 0
   }
-  const ID = IDCount;
-  IDCount++;
+
 
   // I would extract this regex variable at the top of the page since it'll always be the same for every post 
   // Makes it easier to go back and find and change and you code can be liek 
