@@ -56,12 +56,8 @@ var posts = [examplePost,examplePost2,examplePost3,examplePost,examplePost2,exam
 IDCount = posts.length;
 
 form.onsubmit = function(event) {
-  /* you can store these as an object 
-  postInfo = {
-  ID = IDCount
-  author = authorField.value 
-  ... 
-  }
+
+  /*
 
   Then that means you can just pass it as one object in create post 
   and helps add context to what these variables are 
