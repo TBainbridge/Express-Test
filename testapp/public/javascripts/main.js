@@ -186,6 +186,12 @@ deletePost = function(postID){
   reloadPostList();
 
 }
+
+fetchTest = async () => {
+  let results = await fetch(`http:localhost:3000/test`).then(resp => resp.json());
+  console.log(results);
+}
+
 formatPost = function(post) {
   console.log(post.ID);
   return `
